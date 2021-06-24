@@ -1,0 +1,88 @@
+$btn-bg-color: #005A8D
+$body-bg-color: #FF96AD
+$font-color: #022E57
+
+@mixin font($family:sans-serif,$size: 1rem,$align:center,$text-stroke: 1px)
+  font-size: $size
+  text-align: $align
+  color: $font-color
+  -webkit-text-stroke: $text-stroke white
+@mixin button-style($font-size: 1.7rem)
+  outline: none
+  border: none
+  font-size: $font-size
+  color: $font-color
+  background: $btn-bg-color
+  border-radius: 5px
+  &:active
+    transform: scale(0.9)
+
+%centered-flex
+  display: flex
+  justify-content: center
+  align-items: center
+
+body
+  background: $body-bg-color
+
+#root
+  @extend %centered-flex
+  height: calc(100vh - 1em)
+
+#timer-label
+  @include font($size:2rem )
+
+#time-left
+  @include font($size: 10rem ,$text-stroke:1px)
+
+#controls
+  @extend %centered-flex
+  flex-direction: column
+  button
+    height: 72px
+    width: 167px
+    margin-bottom: 4px
+    @include button-style($font-size: 1.7rem)
+    color: $font-color
+
+#options
+  display: flex
+  gap: 27.25vh
+  margin-top: 20px
+  @include font($size: 1.8rem )
+  button
+    @include button-style($font-size: 1.7rem)
+    font-size: initial
+.btn-level
+  margin: 5px 0px
+
+@media only screen and (max-width: 600px)
+  /*Big smartphones [426px -> 600px]*/
+  body
+    @include font($size:1rem )
+
+  #controls button
+    height: 60px
+    width: 100px
+
+@media only screen and (max-width: 425px)
+  /*Small smartphones [325px -> 425px]*/
+  body
+    @include font($size:1rem )
+#time-left
+  -webkit-text-stroke: 1px deepskyblue
+  #controls , #options
+    -webkit-text-stroke: 1px seashell
+
+    button
+      height: 60px
+      width: 61px
+      font-size: 1.2rem
+      margin-bottom: 2px
+  #time-left
+    font-size: 7rem
+  #options
+    gap: 6.25vh
+    margin-top: 7px
+  .material-icons
+    font-size: 33px
